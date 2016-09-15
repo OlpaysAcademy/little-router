@@ -17,8 +17,8 @@ import App from './containers/App';
 import {showUnauthMessage} from './actions/ui';
 
 
-// Needed for onTouchTap 
-// http://stackoverflow.com/a/34015469/988941 
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
 const store = createStore(
@@ -35,10 +35,13 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-    const {auth, router } = store.getState();
+    const { auth, router } = store.getState();
     if (!auth.isLogged && !/^\/auth/.test(router.pathname)) {
         store.dispatch({ type: 'ROUTER_PUSH', payload: '/auth' })
         store.dispatch(showUnauthMessage())
+    }
+    if (auth.isLogged && /^\/auth/.test(router.pathname)) {
+        store.dispatch({ type: 'ROUTER_PUSH', payload: '/app' })
     }
 })
 

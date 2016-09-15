@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { login, logout } from '../actions/auth'
+import { logout } from '../actions/auth'
 import AppComponent from '../components/AppComponent';
 
 
@@ -8,7 +8,9 @@ const mapStateToProps = (state) => {
     return state;
 }
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+    onLogout: () => dispatch(logout()),
+});
 
 const App = connect(
     mapStateToProps,

@@ -1,6 +1,9 @@
+// @flow
 import { createActions } from 'redux-actions';
 
 export const {
-    login,
+    fetchLogin,
+    fetchLoginSuccess,
+    fetchLoginFailure,
     logout,
-} = createActions({}, 'LOGIN', 'LOGOUT');
+} = createActions({}, 'FETCH_LOGIN', 'FETCH_LOGIN_SUCCESS', 'FETCH_LOGIN_FAILURE', 'LOGOUT');
